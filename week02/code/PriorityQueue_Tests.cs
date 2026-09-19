@@ -11,8 +11,10 @@ public class PriorityQueueTests
     // Expected Result: Higher priority items should be removed first.
     // If two items have the same priority, the first one added should
     // be removed first. Expected order: Second, Third, Fourth, First.
-    // Defect(s) Found: When two items had the same highest priority, the item
-    // added later was returned first instead of following FIFO order.
+    // Test Result: Initially failed. Expected "Second" but received "Third".
+    // Defect(s) Found: Items with equal priorities did not follow FIFO order.
+    // The Dequeue method also did not properly check all items and did not
+    // remove the selected item from the queue.
     public void TestPriorityQueue_1()
     {
         var priorityQueue = new PriorityQueue();
@@ -32,8 +34,9 @@ public class PriorityQueueTests
     // Scenario: Attempt to dequeue from an empty priority queue.
     // Expected Result: An InvalidOperationException should be thrown
     // with the message "The queue is empty."
-    // Defect(s) Found: None. The correct InvalidOperationException and
-    // error message were returned.
+    // Test Result: Passed. The expected InvalidOperationException was thrown
+    // with the correct message.
+    // Defect(s) Found: None.
     public void TestPriorityQueue_2()
     {
         var priorityQueue = new PriorityQueue();

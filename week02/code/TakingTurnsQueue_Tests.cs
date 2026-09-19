@@ -11,8 +11,8 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (5), Sue (3) and
     // run until the queue is empty
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
-    // Defect(s) Found: The returned player sequence did not match the expected sequence,
-    // indicating that players were not being re-enqueued/removed correctly based on their turns.
+    // Defect(s) Found: PersonQueue.Enqueue added people to the front of the queue
+    // instead of the back, causing incorrect FIFO ordering.
     public void TestTakingTurnsQueue_FiniteRepetition()
     {
         var bob = new Person("Bob", 2);
